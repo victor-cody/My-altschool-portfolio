@@ -1,0 +1,372 @@
+/* External Fonts */
+@font-face {
+  font-family: "Avenir";
+  src: local("Avenir Roman"), local("Avenir-Roman"),
+    url("../fonts/Avenir-Roman.woff2") format("woff2"),
+    url("../fonts/Avenir-Roman.woff") format("woff"),
+    url("../fonts/Avenir-Roman.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*                     Resets & Defaults Styles                           
+/*=================================================================*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* ScrollBar Styles */
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b8b9be;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #282642;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: "Avenir", sans-serif;
+  font-size: 16px;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  color: #fff;
+  background-color: #151515;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline #fff;
+  padding-bottom: 0.5rem;
+  animation-delay: 2000ms;
+}
+/*===================== Utilities =====================*/
+
+.no-list {
+  list-style: none;
+}
+
+.flex-vertical-center {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-btw-horizontal {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-btw-vertical {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* List */
+.numbered-list {
+  counter-reset: index;
+  padding: 0;
+  max-width: 300px;
+}
+
+/* List element */
+.numbered-list li {
+  counter-increment: index;
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  box-sizing: border-box;
+}
+
+/* Element counter */
+.numbered-list li::before {
+  content: counters(index, ".", decimal-leading-zero);
+  font-size: 1.5rem;
+  text-align: right;
+  font-weight: bold;
+  min-width: 50px;
+  padding-right: 12px;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+  align-self: flex-start;
+  background-image: linear-gradient(to bottom, #fff, grey);
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Element separation */
+.numbered-list li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ============= Sections ============ */
+.page--section {
+  width: 100%;
+  height: auto;
+  min-height: 50vh;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.page--section--header {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+/* About me */
+.about-me--intro {
+  padding-top: 6rem;
+  margin-bottom: 4rem;
+  height: auto;
+  min-height: 90vh;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-me--headshoot {
+  width: 300px;
+  height: 500px;
+  transform: translateY(2rem);
+}
+
+.about-me--intro h2 {
+  font-size: 3rem;
+  margin: 0 3rem;
+  text-transform: capitalize;
+}
+
+.about-me--bio {
+  margin: 0 auto;
+  width: 88%;
+  text-align: justify;
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+
+/* waving hand */
+
+.wave {
+  animation-name: wave; /* Refers to the name of your @keyframes element below */
+  animation-duration: 2s; /* Change to speed up or slow down */
+  animation-iteration-count: infinite; /* Never stop waving :) */
+  transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  } /* The following five values can be played with to make the waving more or less extreme */
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  } /* Reset for the last half to pause */
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 10px;
+  left: 200px;
+  height: 4rem;
+  width: calc(100vw - 400px);
+  border-radius: 5px;
+  padding: 0.4rem 1rem;
+  background: #000;
+  z-index: 10;
+}
+
+.navbar ul {
+  width: auto;
+  min-width: 55%;
+}
+
+.nav-toggler {
+  position: relative;
+}
+
+.dropdown-list {
+  padding: 2rem 1rem;
+  position: absolute;
+  left: 0;
+  top: 3rem;
+  background: #000;
+}
+
+.dropdown-list span {
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #fff;
+}
+
+.tab-list {
+  display: grid;
+  margin: 1rem 0;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+  row-gap: 1.8rem;
+}
+
+#goal p {
+  font-size: 2rem;
+}
+/* ===== Education & Job History ====== */
+
+#education ul,
+#job-history ul {
+  min-width: 80%;
+}
+
+#job-history h4,
+#education h4 {
+  font-size: 1.3rem;
+  text-align: left;
+  margin: 0 1rem;
+}
+
+#job-history h4 span,
+span {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-align: left;
+}
+
+/* ===== Hobbies ====== */
+
+#hobbies ul {
+  display: grid;
+  min-width: 80%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+#hobbies li {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+#hobbies li span {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5rem;
+  margin-left: 0.8rem;
+}
+
+/* Forms */
+form,
+.register {
+  min-width: 80%;
+  max-width: 90%;
+  margin: 1rem 0;
+}
+
+form h2 {
+  font-size: 4rem;
+  font-weight: 300;
+}
+
+form input,
+form fieldset,
+form textarea {
+  border: none;
+  outline: none;
+}
+
+form fieldset {
+  display: grid;
+  margin: 1.7rem 0;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+  row-gap: 1.8rem;
+}
+
+form input,
+form textarea,
+form select {
+  font-size: 1.2rem;
+  border-bottom: 2px solid #fff;
+  background-color: #151515;
+  color: #fff;
+  padding: 0.5rem 0.2rem 0.5rem;
+}
+
+form select {
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.register {
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn {
+  border-radius: 0.2rem;
+  display: block;
+  border: none;
+  padding: 1rem 3rem;
+  margin-top: 1rem;
+  background: #000;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
